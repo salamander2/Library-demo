@@ -14,7 +14,14 @@ user table (for login)
 * last name
 * address
 * phone
+* birthdate
 * link to list of library cards
+
+## Library Card
+* key is barcode
+* patron id
+* status (out of circulation: if a patron loses his/hers, we can never assign the same barcode to someone else)
+* expiry date
 
 ## Bib (Bibliographic entry)
 * id/key
