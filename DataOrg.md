@@ -2,10 +2,10 @@
 
 _All will have a creation timestamp_
 
-user table (for login)
-* login name
-* username
+## user table (for login)
+* username 
 * password (hashed & salted)
+* full name
 * admin level (admin / staff / "patron")
 
 ## Patron
@@ -13,9 +13,12 @@ user table (for login)
 * first name
 * last name
 * address
+* city
+* province
 * phone
+* email (optional)
 * birthdate
-* link to list of library cards
+* (link to list of library cards)
 
 ## Library Card
 * key is barcode
@@ -28,6 +31,9 @@ user table (for login)
 * title
 * author
 * pub date
+* call number (Dewey Decimal System)
+* genre ?
+* subjects ?
 * ?
 
 ## Holdings (representing actual physical media)
@@ -35,7 +41,7 @@ user table (for login)
 * BIB id# (link)
 * Patron id# (if checed out)
 * status (link to status list: in, out, lost, discard, repairs, ...)
-* media (link to meia list: book, DVD, audiobook, ..)
+* media (link to meia list: book, DVD, audiobook, ..) (?)
 * language ?
 * cost
 * ISBN
