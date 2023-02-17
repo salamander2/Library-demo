@@ -2,6 +2,8 @@
 
 _All will have a creation timestamp_
 
+Actual [SQL Table config](SQL_Tables.md)
+
 ## user table (for login)
 * username 
 * password (hashed & salted)
