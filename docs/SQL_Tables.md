@@ -1,7 +1,7 @@
-## PATRONS
+## PATRON
 
 ```
-CREATE TABLE `patrons` (
+CREATE TABLE `patron` (
  `id` int unsigned AUTO_INCREMENT NOT NULL,
  `firstname` varchar(30) NOT NULL,
  `lastname` varchar(30) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE `patrons` (
 ```
 
 ```
-describe patrons;
+describe patron;
 +------------+--------------+------+-----+-------------------+-------------------+
 | Field      | Type         | Null | Key | Default           | Extra             |
 +------------+--------------+------+-----+-------------------+-------------------+
@@ -33,4 +33,36 @@ describe patrons;
 | createDate | timestamp    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
 +------------+--------------+------+-----+-------------------+-------------------+
 10 rows in set (0.02 sec)
+```
+
+##BIB
+
+```
+CREATE TABLE `bib`(
+`id` int unsigned AUTO_INCREMENT NOT NULL,
+`title` varchar(50) NOT NULL,
+`author` varchar(50) NOT NULL,
+`pub_date` int NOT NULL,
+`ISBN` int NOT NULL,
+`call_number` varchar(15) DEFAULT NULL,
+`subjects` varchar(100) DEFAULT NULL,
+`time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY(`id`) 
+)ENGINE=InnoDB;
+```
+
+```describe bib;
++-------------+--------------+------+-----+-------------------+-------------------+
+| Field       | Type         | Null | Key | Default           | Extra             |
++-------------+--------------+------+-----+-------------------+-------------------+
+| id          | int unsigned | NO   | PRI | NULL              | auto_increment    |
+| title       | varchar(150) | NO   |     | NULL              |                   |
+| author      | varchar(50)  | NO   |     | NULL              |                   |
+| pub_date    | int          | NO   |     | NULL              |                   |
+| ISBN        | int          | NO   |     | NULL              |                   |
+| call_number | varchar(15)  | YES  |     | NULL              |                   |
+| subjects    | varchar(200) | YES  |     | NULL              |                   |
+| time_stamp  | timestamp    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++-------------+--------------+------+-----+-------------------+-------------------+
+8 rows in set (0.00 sec)
 ```
