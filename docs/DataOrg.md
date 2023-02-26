@@ -22,7 +22,7 @@ Actual [SQL Table config](SQL_Tables.md)
 * birthdate
 * (link to list of library cards)
 
-## Library Card
+## LibraryCard
 * key is barcode
 * patron id
 * status (out of circulation: if a patron loses his/hers, we can never assign the same barcode to someone else)
@@ -46,3 +46,11 @@ Actual [SQL Table config](SQL_Tables.md)
 * cost
 * media (link to meia list: book, DVD, audiobook, ..) (?)
 * language ?
+
+## Status (status of books)
+* code (primary key) varchar(10)    Could this be an enum?
+* description (40 chars, varchar)
+
+"code" will be IN, OUT, LOST, DAMAGED, DISCARD, REPAIRS, CR, ...     
+"description" provides a description of the code. eg. CR = "Claims Returned"    
+There will only be about 5-10 statuses.    
