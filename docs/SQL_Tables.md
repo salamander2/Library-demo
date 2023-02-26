@@ -35,7 +35,7 @@ describe patron;
 10 rows in set (0.02 sec)
 ```
 
-##BIB
+## BIB
 
 ```
 CREATE TABLE `bib`(
