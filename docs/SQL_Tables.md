@@ -66,3 +66,33 @@ CREATE TABLE `bib`(
 +-------------+--------------+------+-----+-------------------+-------------------+
 8 rows in set (0.00 sec)
 ```
+
+## STATUS
+
+```
+mysql> describe status;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| code        | varchar(20)  | NO   | PRI | NULL    |       |
+| description | varchar(255) | NO   |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+```
+
+```
+> SELECT * FROM status;
++---------+-------------------------+
+| code    | description             |
++---------+-------------------------+
+| CR      | Claimed Returned        |
+| DAMAGED | Damaged (is in library) |
+| DISCARD | To be discarded         |
+| IN      | In                      |
+| LOST    | Lost                    |
+| OUT     | Out                     |
+| REPAIR  | Is being repaired       |
++---------+-------------------------+
+7 rows in set (0.00 sec)
+```
+
