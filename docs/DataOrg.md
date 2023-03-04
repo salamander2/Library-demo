@@ -23,7 +23,7 @@ Actual [SQL Table config](SQL_Tables.md)
 * (link to list of library cards)
 
 ## LibraryCard
-* key is barcode:  3xxxxyyyyy : x will be library code y is sequential number (99,999 cards only)
+* key is barcode:  2xxxxyyyyy : x will be library code (0748) y is sequential number (99,999 cards only)
 * patron id (required, liked to Patron file, using foreign key, on delete cascade)
 * status (try enum: valid, lost, expired)
  (out of circulation: if a patron loses his/hers, we can never assign the same barcode to someone else)
@@ -42,7 +42,7 @@ All of these fields are required.
 * (time stamp when record is created)
 
 ## Holdings (representing actual physical media)
-* barcode = key
+* barcode = key. This will be the same format as the Library Card barcode, but it will begin with a 3
 * BIB id# (link)
 * Patron id# (if checked out)
 * status (link to status list: in, out, lost, discard, repairs, ...)
