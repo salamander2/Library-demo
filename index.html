@@ -4,33 +4,59 @@
 <head>
 	<meta charset="utf-8">
 	<title>Web Dev Club Project Page</title>
-	<!-- Link to local bootstrap file. -->
-	<link rel="stylesheet" href="./resources/bootstrap.min.css">
-<!--	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
-<!--	 <link rel="stylesheet" href="./resources/font-awesome.min.css"> -->
-	<!--    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>-->
-	<!--    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-	<!-- make sure that the webpage works on cell phones too -->
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="resources/bootstrap-5.2.3-dist/css/bootstrap.min.css" >
 </head>
 
 <body>
-<div class="container-md">
-	<h2>London Central Web Development Club</h2>
-<hr>
-	<h2 class="text-danger">Starting page for our Library Database project</h2>
+<div class="container-md mt-2">
+	<h2 class="bg-warning text-center rounded py-3">The GHOSTS Public Libary</h2>
 	<div id="error_message"></div>
 
-	<div class="card">
+&nbsp;
+	<div class="row "><div class="col-md-8">
+	<div class="card border border-primary px-2">
+		<form>
+		<div class="alert alert-warning">Sign in</div>
+		<!-- <div class="input-group mb-3"> -->
+		<div class="row">
+			<div class="col-4">
+				<input type="text" name="username" id="username" class="form-control" placeholder="Username" >
+			</div>
+			<div class="col-4">
+				<input type="password" name="password" id="password" class="form-control" placeholder="Password">
+			</div>
+			<div class="col-md-2">
+				<button type="submit" class="btn btn-primary">
+					Login
+				</button>
+			</div>
+		</div>
+		<p><i>This does not work yet</i></p>
+		</form>
+		</div>
+	</div></div>
+&nbsp;
 
+	<div class="card border border-secondary">
 		<div class="card-body">
-			<p class="">* <a href="listPatron.php">List all Patrons</a><br>
-			(this page will eventually have a button for adding a patron, clicking on a patron will pull up the edit screen)<br>
-			A search function should also be implemented </p>
-			<p class="">* <a href="">Add a Patron</a><br>
-			(upon adding (save) it will return to the patron listing)</p>
+<!-- SEARCH FORM -->
+    <div class="ml-3">
+        <fieldset>
+            <b>Search:</b> <input size=33 id="inputName" type="text" onkeyup="findPatron(this.value)" onkeydown="if (event.keyCode === 27) resetTerminal();"
+            placeholder="Enter Patron last name, phone, or barcode">
+		<span class="float-end"><a href="addPatron.php"><button type="button" class="btn btn-success">Add Patron</button></a></span>
+        </fieldset>
+    </div>
+
+&nbsp;
+			<p class="">* <a href="listPatron1.php">List all Patrons</a><br>
+			Here's our initial list patron page. Eventually, it will pop up from the search bar above.</p>
 			<p class="">* <a href="">Edit a Patron</a><br>
-			(this page will show the patron information and allow editing (update) or deletion. Upon deletion it will return the the patron listing)</p>
+			(This will normally be accessed by clicking on a patron from the listing above.)<br>
+			(This page will show the patron information and allow editing (update) or deletion. Upon deletion it will return here.)</p>
 
 		</div><!-- /card-body -->
 	</div><!-- /card -->
