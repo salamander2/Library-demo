@@ -16,7 +16,8 @@
 	<div id="error_message"></div>
 
 &nbsp;
-	<div class="row "><div class="col-md-8">
+	<div class="row ">
+	<div class="col-md-8">
 	<div class="card border border-primary px-2">
 		<form>
 		<div class="alert alert-warning">Sign in</div>
@@ -37,15 +38,18 @@
 		<p><i>This does not work yet</i></p>
 		</form>
 		</div>
-	</div></div>
+	</div>
+	<div class="col-3 offset-1"><img width=200 height=170 src="images/ghost.png">
+	</div>
+	</div>
 &nbsp;
 
-	<div class="card border border-secondary">
+	<div class="card border border-secondary alert alert-warning">
 		<div class="card-body">
 <!-- SEARCH FORM -->
     <div class="ml-3">
         <fieldset>
-            <b>Search:</b> <input size=33 id="inputName" type="text" onkeyup="findPatron(this.value)" onkeydown="if (event.keyCode === 27) resetTerminal();"
+            <b>Search:</b> <input size=35 id="inputName" type="text" onkeyup="findPatron(this.value)" onkeydown="if (event.keyCode === 27) resetTerminal();"
             placeholder="Enter Patron last name, phone, or barcode">
 		<span class="float-end"><a href="addPatron.php"><button type="button" class="btn btn-success">Add Patron</button></a></span>
         </fieldset>
