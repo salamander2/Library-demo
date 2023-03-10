@@ -46,18 +46,18 @@
 	}
 	if (sizeof($partName) != 2){
 		$error = True;
-		$fix = "Try Using a first and last name sperated by a space";
+		$fix = "Try using a first and last name separated by a space.";
 	}
 	if(strlen($partName[0])>30){
 		$error = True;
-		$fix = "Your first name appers to be too long try shortining it up";
+		$fix = "Your first name appears to be too long. Please try abbreviating it.";
 	}
 	if(strlen($partName[0])>10){
 		$error = True;
-		$fix = "Your last name appers to be too long try shortining it up";
+		$fix = "Your last name appears to be too long. Please try abbreviating it.";
 	}
 	if ($form != '' and ! $error ) {
-		echo "<h1>Hello ".$partName[0]." you have beed added to the database</h1>";
+		echo "<h1>Hello ".$partName[0]." you have beed added to the database.</h1>";
   		echo "Name:".$name."<br>";
   		echo "City:".$city."<br>";
  		echo "Province:".$prov."<br>";
@@ -100,7 +100,7 @@
 			runSimpleQuery($db,"INSERT INTO patron (firstname,lastname, address,city, prov, postalCode,phone,email, birthdate) VALUES ('$partName[0]', '$partName[1]', '$address', '$city', '$prov', '$postal','$phone','$email','$birthdate');");
 		}
  	header( "refresh:5;url=https://webdev.iquark.ca/~mhammoud/Library-demo/listPatron.php" );
-	echo "<h3> You will soon be redirected back to the main page</h3>";
+	echo "<h3> You will soon be redirected back to the main page...</h3>";
 		
 	}
 ?>
