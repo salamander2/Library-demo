@@ -96,3 +96,45 @@ mysql> describe status;
 7 rows in set (0.00 sec)
 ```
 
+## LIBRARY CARD
+
+```
+CREATE TABLE `libraryCard` (
+  `barcode` int unsigned NOT NULL,
+  `patronId` int unsigned NOT NULL,
+  `status` enum('VALID','LOST','EXPIRED') NOT NULL,
+  `expiryDate` date DEFAULT NULL,
+  PRIMARY KEY (`barcode`),
+  KEY `patron_link` (`patronId`),
+  CONSTRAINT `patron_link` FOREIGN KEY (`patronId`) REFERENCES `patron` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+```
+
+**Trigger** to add expiry date if none is supplied 
+
+```
+delimiter //
+CREATE TRIGGER set_expiryDate BEFORE INSERT ON libraryCard FOR EACH ROW
+BEGIN
+  IF NEW.expiryDate IS NULL THEN
+     SET NEW.expiryDate = CURDATE() + INTERVAL 1 YEAR;
+  END IF;
+END;//
+delimiter ;
+```
+
+
+
+
+```
+> describe libraryCard
++------------+--------------------------------+------+-----+---------+-------+
+| Field      | Type                           | Null | Key | Default | Extra |
++------------+--------------------------------+------+-----+---------+-------+
+| barcode    | int unsigned                   | NO   | PRI | NULL    |       |
+| patronId   | int unsigned                   | NO   | MUL | NULL    |       |
+| status     | enum('VALID','LOST','EXPIRED') | NO   |     | NULL    |       |
+| expiryDate | date                           | YES  |     | NULL    |       |
++------------+--------------------------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+

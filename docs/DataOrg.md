@@ -2,7 +2,7 @@
 
 _All will have a creation timestamp_
 
-Actual [SQL Table config](SQL_Tables.md)
+##  ➡️ Actual [SQL Table config](SQL_Tables.md)
 
 ## user table (for login)
 * username 
@@ -25,7 +25,7 @@ Actual [SQL Table config](SQL_Tables.md)
 ## LibraryCard
 * key is barcode:  2xxxxyyyyy : x will be library code (0748) y is sequential number (99,999 cards only)
 * patron id (required, liked to Patron file, using foreign key, on delete cascade)
-* status (try enum: valid, lost, expired)
+* status (try enum: valid, lost, expired)    
  (out of circulation: if a patron loses his/hers, we can never assign the same barcode to someone else)
 * expiry date (this will be set for a year from present or from their last birthday)
 
