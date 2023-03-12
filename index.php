@@ -2,7 +2,7 @@
 session_start();
 require_once('common.php');
 
-//TODO: shouldn't username be set to "" no matter what?
+//Override the common.php functionality. Username needs to be cleared because this is a login page.
 if (isset($username)){
 	$username = "";
 	$_SESSION["username"] = "";
@@ -46,6 +46,7 @@ if(isset($_POST['submit'])) {
 	} elseif (!password_verify ($password, $pwdHash )) {
 		$error_message = "Invalid password";
 	}
+	//Password has been checked, now clear the variable for security reasons.
 	$password = "---";
 	
 	// error message ...
@@ -76,6 +77,13 @@ if(isset($_POST['submit'])) {
 	}
 }
 
+//For development:
+//"shell_exec() or exec() do not allow full ls listing.
+//Also, running "git branch" doesn't work either
+//$gitbranch = "Current branch: ".(exec('git branch --show-current'));
+$gitbranch = file('.git/HEAD', FILE_USE_INCLUDE_PATH)[0];
+$gitbranch = explode("/", $gitbranch, 3)[2]; //seperate out by the "/" in the string, take branchname
+$gitbranch = "Current branch:<br><b>$gitbranch</b>";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,6 +130,8 @@ if(isset($_POST['submit'])) {
 			return true;
 		}
 	</script>
+
+<span class="small" style="position:absolute;left:0px;top:0px;z-index:-1;"><?=$gitbranch ?></span>
 
 <div class="container-md mt-2">
 	<h2 class="bg-warning text-center rounded py-3">The GHOSTS Public Libary</h2>
