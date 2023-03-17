@@ -41,7 +41,7 @@ All of these fields are required.
 * pub date
 * ISBN
 * call number (Dewey Decimal System) [optional]
-* subjects [optional]  <-- the 
+* subjects [optional]  <-- the subjects are all empty for the data that we loaded into Bib.
 * createDate (time stamp when record is created)
 
 ## Holdings (representing actual physical media)
