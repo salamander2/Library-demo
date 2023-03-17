@@ -9,6 +9,7 @@ _All will have a creation timestamp_
 * password (hashed & salted)
 * full name
 * admin level (admin / staff / "patron")
+* "createDate"(time stamp when record is created)
 
 ## Patron
 * id / key
@@ -21,6 +22,7 @@ _All will have a creation timestamp_
 * email (optional)
 * birthdate
 * (link to list of library cards)
+* "createDate"(time stamp when record is created)
 
 ## LibraryCard
 * key is barcode:  2xxxxyyyyy : x will be library code (0748) y is sequential number (99,999 cards only)
@@ -28,6 +30,7 @@ _All will have a creation timestamp_
 * status (try enum: valid, lost, expired)    
  (out of circulation: if a patron loses his/hers, we can never assign the same barcode to someone else)
 * expiry date (this will be set for a year from present or from their last birthday)
+* "createDate"(time stamp when record is created)
 
 All of these fields are required.
 
@@ -38,17 +41,19 @@ All of these fields are required.
 * pub date
 * ISBN
 * call number (Dewey Decimal System) [optional]
-* subjects [optional]
-* (time stamp when record is created)
+* subjects [optional]  <-- the 
+* createDate (time stamp when record is created)
 
 ## Holdings (representing actual physical media)
-* barcode = key. This will be the same format as the Library Card barcode, but it will begin with a 3
-* BIB id# (link)
-* Patron id# (if checked out)
-* status (link to status list: in, out, lost, discard, repairs, ...)
-* cost
-* media (link to meia list: book, DVD, audiobook, ..) (?)
-* language ?
+* barcode = primary key. This will be the same format as the Library Card barcode, but it will begin with a 3 (ie. 30749yyyyy).  
+* BIB id# (link) <-- this is a foreign key. It cannot be null.
+* Patron id# (if checked out) <-- this is a foreign key (linked to Patron ID obviously). It CAN be null. It is not required. Default is null.
+* cost  <-- Stored in cents. Cannot be null. Required.
+The above 4 things will be "unsigned int"
+* status (link to status list: in, out, lost, discard, repairs, ...) <-- This is a foreign key. It cannot be null. Default is IN
+* media (link to meia list: book, DVD, audiobook, ..) (?) _ X No, we do not want this field. We can add it later._
+* language _X No we do not want this field. _
+* "createDate"(time stamp when record is created)
 
 ## Status (status of books)
 * code (primary key) varchar(10)    Could this be an enum?
