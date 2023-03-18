@@ -158,6 +158,7 @@ $gitbranch = "Current branch:<br><b>$gitbranch</b>";
 				</button>
 			</div>
 		</div>
+		<p class="small mt-3">Temp username: "staff", password "SnowyMarch"</p>
 		</form>
 		</div>
 	</div>
