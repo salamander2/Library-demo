@@ -137,4 +137,49 @@ delimiter ;
 | expiryDate | date                           | YES  |     | NULL    |       |
 +------------+--------------------------------+------+-----+---------+-------+
 4 rows in set (0.00 sec)
+```
 
+## HOLDINGS
+
+`from "SHOW CREATE TABLE holdings;"`
+
+```
+CREATE TABLE `holdings` (
+  `barcode` int unsigned NOT NULL,
+  `bibID` int unsigned NOT NULL,
+  `patronID` int unsigned DEFAULT NULL,
+  `cost` int unsigned NOT NULL COMMENT 'in cents',
+  `status` varchar(20) NOT NULL,
+  `ckoDate` date DEFAULT NULL,
+  `dueDate` date DEFAULT NULL,
+  `prevPatron` int unsigned DEFAULT NULL,
+  `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`barcode`),
+  KEY `patronID_link` (`patronID`),
+  KEY `bibID_link` (`bibID`),
+  KEY `status_link` (`status`),
+  KEY `prevPatron_link` (`prevPatron`),
+  CONSTRAINT `bibID_link` FOREIGN KEY (`bibID`) REFERENCES `bib` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `patronID_link` FOREIGN KEY (`patronID`) REFERENCES `patron` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `prevPatron_link` FOREIGN KEY (`prevPatron`) REFERENCES `patron` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `status_link` FOREIGN KEY (`status`) REFERENCES `status` (`code`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
+```
+
+```
+> DESCRIBE holdings;
++------------+--------------+------+-----+-------------------+-------------------+
+| Field      | Type         | Null | Key | Default           | Extra             |
++------------+--------------+------+-----+-------------------+-------------------+
+| barcode    | int unsigned | NO   | PRI | NULL              |                   |
+| bibID      | int unsigned | NO   | MUL | NULL              |                   |
+| patronID   | int unsigned | YES  | MUL | NULL              |                   |
+| cost       | int unsigned | NO   |     | NULL              |                   |
+| status     | varchar(20)  | NO   | MUL | NULL              |                   |
+| ckoDate    | date         | YES  |     | NULL              |                   |
+| dueDate    | date         | YES  |     | NULL              |                   |
+| prevPatron | int unsigned | YES  | MUL | NULL              |                   |
+| createDate | timestamp    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++------------+--------------+------+-----+-------------------+-------------------+
+9 rows in set (0.01 sec)
+```
