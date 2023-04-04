@@ -51,6 +51,9 @@ All of these fields are required.
 * cost  <-- Stored in cents. Cannot be null. Required.
 The above 4 things will be "unsigned int"
 * status (link to status list: in, out, lost, discard, repairs, ...) <-- This is a foreign key. It cannot be null. Default is IN
+* ckoDate (date). Date that the book was last checked out. 
+* dueDate (date). Date that book is due (if status = out or lost or CR).
+* prevPatron (link). This is the previous patron who had the book out.
 * media (link to meia list: book, DVD, audiobook, ..) (?) _ X No, we do not want this field. We can add it later._
 * language _X No we do not want this field. _
 * "createDate"(time stamp when record is created)
