@@ -1,3 +1,28 @@
+## USERS
+
+```
+mysql> describe users;
++-----------+--------------+------+-----+-------------------+-------+
+| Field     | Type         | Null | Key | Default           | Extra |
++-----------+--------------+------+-----+-------------------+-------+
+| username  | varchar(30)  | NO   | PRI | NULL              |       |
+| fullname  | varchar(50)  | NO   |     | ---               |       |
+| password  | varchar(255) | NO   |     | NULL              |       |
+| lastLogin | timestamp    | NO   |     | CURRENT_TIMESTAMP |       |
++-----------+--------------+------+-----+-------------------+-------+
+4 rows in set (0.00 sec)
+```
+
+```
+CREATE TABLE `users` (
+  `username` varchar(30) NOT NULL,
+  `fullname` varchar(50) NOT NULL DEFAULT '---',
+  `password` varchar(255) NOT NULL,
+  `lastLogin` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+```
+
 ## PATRON
 
 ```
