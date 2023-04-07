@@ -42,7 +42,7 @@ if(isset($_POST['submit'])) {
 	$row_cnt = mysqli_num_rows($result);
 	// die($row_cnt);
 	if (0 === $row_cnt) {		
-		$error_message = "That user does not exist. <br>(Check case of username or talk to admin.)";
+		$error_message = "That user does not exist. <br><span class='small'>(Check case of username or talk to admin.)</span>";
 	} elseif (!password_verify ($password, $pwdHash )) {
 		$error_message = "Invalid password";
 	}
@@ -50,7 +50,7 @@ if(isset($_POST['submit'])) {
 	$password = "---";
 	
 	// error message ...
-	if ($error_message != "") $error_message = '<div class="alert text-white bg-danger mt-3"><b> '. $error_message .' </b></div>';
+	if ($error_message != "") $error_message = '<div class="alert text-white bg-danger w-50 mt-3"><b> '. $error_message .' </b></div>';
 	if (empty($error_message)) {
 		$_SESSION["username"] = $username;
 		$_SESSION["fullname"] = $fullname;
@@ -108,7 +108,7 @@ else $gitbranch = "Current branch:<br><b>$gitbranch</b>";
 				text = "You must include a username";
 				//text = "<div class=\"error\">" + text + "</div>";
 				document.getElementById("error_message").outerHTML =
-					'<div id="error_message" class="alert alert-danger w-50"></div>';
+					'<div id="error_message" class="alert alert-danger w-50 mt-2"></div>';
 				document.getElementById("username").outerHTML =
 					'<input type="text" name="username" id="username"  class="form-control border-danger" placeholder="Username">';
 				document.getElementById("error_message").innerHTML = text;
@@ -120,7 +120,7 @@ else $gitbranch = "Current branch:<br><b>$gitbranch</b>";
 				text = "You must include a password";
 				//text = "<div class=\"error\">" + text + "</div>";
 				document.getElementById("error_message").outerHTML =
-					'<div id="error_message" class="alert alert-danger w-50 "></div>';
+					'<div id="error_message" class="alert alert-danger w-50 mt-2"></div>';
 				document.getElementById("password").outerHTML =
 					'<input type="password" name="password" id="password" class="form-control border-danger" placeholder="Password">';
 				document.getElementById("error_message").innerHTML = text;
@@ -143,7 +143,7 @@ else $gitbranch = "Current branch:<br><b>$gitbranch</b>";
 	<div class="col-md-8">
 	<div class="card border border-primary p-2">
 		<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" onsubmit="return validateData()">
-		<div class="alert alert-warning">Sign in</div>
+		<div class="alert alert-warning"><b>Sign in</b></div>
 		<!-- <div class="input-group mb-3"> -->
 		<div class="row">
 			<div class="col-4">
@@ -165,29 +165,22 @@ else $gitbranch = "Current branch:<br><b>$gitbranch</b>";
 	</div>
 	<div class="col-3 offset-1"><img width=200 height=170 src="images/ghost.png">
 	</div>
-	</div>
+	</div> 
+	<!-- This is the JAVASCRIPT error message -->
 	<div id="error_message"></div>
+	<!-- This is the PHP error message -->
 	<?php if ($error_message != "") echo $error_message; ?>
-&nbsp;
 
 	<div class="card border border-secondary alert alert-warning">
 		<div class="card-body">
-<!-- SEARCH FORM -->
-    <div class="ml-3">
-        <fieldset>
-            <b>Search:</b> <input size=35 id="inputName" type="text" onkeyup="findPatron(this.value)" onkeydown="if (event.keyCode === 27) resetTerminal();"
-            placeholder="Enter Patron last name, phone, or barcode">
-		<span class="float-end"><a href="addPatron.php"><button type="button" class="btn btn-success">Add Patron</button></a></span>
-        </fieldset>
-		<p><i>This does not work yet</i></p>
-    </div>
-
-&nbsp;
-			<p class="">* <a href="listPatron1.php">List all Patrons</a><br>
-			Here's our initial list patron page. Eventually, it will pop up from the search bar above.</p>
-			<p class="">* <a href="">Edit a Patron</a><br>
-			(This will normally be accessed by clicking on a patron from the listing above.)<br>
-			(This page will show the patron information and allow editing (update) or deletion. Upon deletion it will return here.)</p>
+		<h3>Welcome to our library database project</h3>
+        <b><u>Status</u></b>
+		<p>So far the following is working:</p>
+		<ul>
+		<li>login and log out
+		<li>listing patrons
+		<li>adding a patron
+		</ul>
 
 		</div><!-- /card-body -->
 	</div><!-- /card -->
