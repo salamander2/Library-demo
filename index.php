@@ -83,7 +83,8 @@ if(isset($_POST['submit'])) {
 //$gitbranch = "Current branch: ".(exec('git branch --show-current'));
 $gitbranch = file('.git/HEAD', FILE_USE_INCLUDE_PATH)[0];
 $gitbranch = explode("/", $gitbranch, 3)[2]; //seperate out by the "/" in the string, take branchname
-$gitbranch = "Current branch:<br><b>$gitbranch</b>";
+if (trim($gitbranch) == "master") $gitbranch = "";
+else $gitbranch = "Current branch:<br><b>$gitbranch</b>";
 ?>
 <!DOCTYPE html>
 <html lang="en">
